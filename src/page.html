@@ -59,6 +59,7 @@
   }
   .stage img { width: 100%; height: 100%; max-width: 100%; object-fit: contain; display: block; }
   .credit { margin: 0; font-size: 0.75rem; color: var(--muted); }
+  .credit a { color: inherit; }
 
   /* Word panel: a column at the right on a wide screen, over the picture on a phone. */
   .panel {
@@ -259,7 +260,7 @@
       return button;
     }));
     document.getElementById("fr").textContent = sentences[index].fr;
-    document.getElementById("credit").textContent = credits[sentences[index].image];
+    showCredit(document.getElementById("credit"), sentences[index].image);
     refreshReview();
   }
 
@@ -275,7 +276,7 @@
     const image = document.getElementById("panel-image");
     image.hidden = !word.image;
     if (word.image) { image.src = "img/" + word.image; image.alt = word.fr; }
-    document.getElementById("panel-credit").textContent = word.image ? credits[word.image] : "";
+    showCredit(document.getElementById("panel-credit"), word.image);
     document.getElementById("panel").hidden = false;
     document.getElementById("middle").classList.add("open");
   }
@@ -285,6 +286,20 @@
     document.querySelectorAll(".word[aria-pressed='true']").forEach((b) => b.setAttribute("aria-pressed", "false"));
     document.getElementById("panel").hidden = true;
     document.getElementById("middle").classList.remove("open");
+  }
+
+  function showCredit(element, imageName) {
+    const entry = imageName ? credits[imageName] : null;
+    element.replaceChildren();
+    if (!entry) return;
+    if (!entry.licence_url) { element.textContent = entry.credit; return; }
+    const cut = entry.credit.lastIndexOf(", ") + 2;
+    const link = document.createElement("a");
+    link.href = entry.licence_url;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = entry.credit.slice(cut);
+    element.append(entry.credit.slice(0, cut), link);
   }
 
   function sentenceAt(time) {

@@ -23,7 +23,10 @@ STANDALONE_HEAD = (
 def main() -> None:
     song = json.loads((ROOT / "song.json").read_text())
     audio = base64.b64encode((ROOT / song["audio"]).read_bytes()).decode()
-    credits = {name: image["credit"] for name, image in song["images"].items()}
+    credits = {
+        name: {"credit": image["credit"], "licence_url": image.get("licence_url")}
+        for name, image in song["images"].items()
+    }
     page = (ROOT / "src" / "page.html").read_text()
     page = page.replace("__SENTENCES__", json.dumps(song["sentences"], ensure_ascii=False))
     page = page.replace("__CREDITS__", json.dumps(credits, ensure_ascii=False))

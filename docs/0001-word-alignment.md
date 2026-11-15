@@ -1,6 +1,6 @@
 # Word alignment
 
-Status: accepted, in progress (15 Nov 2026). First-run results are not in this file.
+Status: implemented (15 Nov 2026). The word times are not checked by ear yet.
 
 ## Symptom
 
@@ -48,3 +48,15 @@ flowchart LR
 - Held notes can move a word boundary by a few hundred milliseconds. Assumption: some words need the manual correction.
 - The aligner needs PyTorch. The script runs through `uv`, so the system Python stays unchanged.
 - A new song needs sentence times first. Today these come from silence detection plus a check by ear.
+
+**First run (15 Nov 2026)**
+
+| Item | Result |
+|---|---|
+| Command | `uv run scripts/align_words.py` |
+| Words with times | 40 of 40, no failed check (order, inside the sentence, 0.1 s minimum) |
+| Word end | Extended to the next word start. The aligner marks only the first part of a held note |
+| Background music | None found |
+| Doubtful starts | `mau` (49.77 s, sound attack at 49.33 s) and `mát` (38.45 s, attack at 39.22 s) |
+| Low aligner score | `Chăn trâu`, `mình trâu`, `nghêu ngao`. Their starts match a sound onset |
+| Correction tool | Add `#review` to the page address, press Répéter, tap once per word |

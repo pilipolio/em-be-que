@@ -342,15 +342,18 @@
   "images": {
     "01-garder-les-buffles.jpg": {
       "source": "https://live.staticflickr.com/3887/14920590275_383bbb96b5_b.jpg",
-      "credit": "Photo Gene Whitmer, 1972 (Tommy Japan 79, Flickr), CC BY"
+      "credit": "Photo Gene Whitmer, 1972 (Tommy Japan 79, Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "02-bonheur.jpg": {
       "source": "commons:Walking the water buffalo.jpg",
-      "credit": "Photo Oceanik, CC BY 2.0"
+      "credit": "Photo Oceanik, CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "03-co-lau.jpg": {
       "source": "commons:Kans Grass-4.jpg",
-      "credit": "Photo Hopeoflight, CC BY-SA 4.0"
+      "credit": "Photo Hopeoflight, CC BY-SA 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     "04-chanter.jpg": {
       "source": "commons:Chăn trâu thổi sáo.jpg",
@@ -362,31 +365,38 @@
     },
     "06-colline.jpg": {
       "source": "https://live.staticflickr.com/5034/6944145772_d2dd3ae26d_b.jpg",
-      "credit": "Photo David McKelvey (Flickr), CC BY"
+      "credit": "Photo David McKelvey (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "07-riziere.jpg": {
       "source": "commons:Vietnam - Rice fields near Da Lat.jpg",
-      "credit": "Photo P. Hughes, CC BY 4.0"
+      "credit": "Photo P. Hughes, CC BY 4.0",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/"
     },
     "08-epeler.jpg": {
       "source": "commons:Schoolchildren Nam Yen Quang Nam.jpg",
-      "credit": "Photo Gene Bromberg, CC BY-SA 2.0"
+      "credit": "Photo Gene Bromberg, CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
     },
     "word-trau.jpg": {
       "source": "https://live.staticflickr.com/7237/7326939360_270b0dfdca_b.jpg",
-      "credit": "Photo kBandara (Flickr), CC BY 2.0"
+      "credit": "Photo kBandara (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-kho.jpg": {
       "source": "https://live.staticflickr.com/2842/33264058461_f95c157222_b.jpg",
-      "credit": "Photo PiktourUK (Flickr), CC BY 2.0"
+      "credit": "Photo PiktourUK (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-phat.jpg": {
       "source": "https://live.staticflickr.com/3826/10820800325_37b500e5a5_b.jpg",
-      "credit": "Photo DVIDSHUB (Flickr), CC BY 2.0"
+      "credit": "Photo DVIDSHUB (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-hat.jpg": {
       "source": "https://live.staticflickr.com/30/47807561_b445e1520d.jpg",
-      "credit": "Photo shawnzrossi (Flickr), CC BY 2.0"
+      "credit": "Photo shawnzrossi (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-hoc.jpg": {
       "source": "https://live.staticflickr.com/65535/48997124487_6bb756f3f9_b.jpg",
@@ -394,27 +404,33 @@
     },
     "word-non.jpg": {
       "source": "https://live.staticflickr.com/7206/6887401350_16dd33ec29_b.jpg",
-      "credit": "Photo aarongunnar (Flickr), CC BY-SA 2.0"
+      "credit": "Photo aarongunnar (Flickr), CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
     },
     "word-gio.jpg": {
       "source": "https://live.staticflickr.com/7149/6843559085_13e12c2a30_b.jpg",
-      "credit": "Photo Smabs Sputzer (Flickr), CC BY 2.0"
+      "credit": "Photo Smabs Sputzer (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-theo.jpg": {
       "source": "https://live.staticflickr.com/7066/7115400473_456cdb57e6_b.jpg",
-      "credit": "Photo rkramer62 (Flickr), CC BY 2.0"
+      "credit": "Photo rkramer62 (Flickr), CC BY 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by/2.0/"
     },
     "word-lua.jpg": {
       "source": "https://live.staticflickr.com/5601/15347868847_e599a57373_b.jpg",
-      "credit": "Photo matsuyuki (Flickr), CC BY-SA 2.0"
+      "credit": "Photo matsuyuki (Flickr), CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
     },
     "word-danh-van.jpg": {
       "source": "https://live.staticflickr.com/854/43712541631_6888d60a02_b.jpg",
-      "credit": "Photo readyelements.com (Flickr), CC0"
+      "credit": "Photo readyelements.com (Flickr), CC0",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
     },
     "word-mau.jpg": {
       "source": "https://live.staticflickr.com/1074/694171888_d8bb1058a2_b.jpg",
-      "credit": "Photo leafar. (Flickr), CC BY-SA 2.0"
+      "credit": "Photo leafar. (Flickr), CC BY-SA 2.0",
+      "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
   }
 }
