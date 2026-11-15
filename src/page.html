@@ -97,6 +97,29 @@
   }
   .panel .listen svg { width: 22px; height: 22px; fill: currentColor; }
 
+  /* Review mode (#review): tap once per sung word to correct the word starts. */
+  .page.reviewing { height: auto; }
+  .page.reviewing .middle { min-height: 34vh; }
+  .review {
+    display: flex; flex-direction: column; gap: 8px; text-align: left;
+    border: 1px solid var(--ink); border-radius: 8px; padding: 12px;
+  }
+  .review h2 { margin: 0; font-size: 1.1rem; color: var(--red); }
+  .review p { margin: 0; font-size: 0.95rem; }
+  .review .tap {
+    min-height: 88px; border: 1px solid var(--red); border-radius: 10px;
+    background: var(--red); color: var(--paper);
+    font: 700 1.6rem var(--font); cursor: pointer; touch-action: manipulation;
+  }
+  .review .tap:active { background: #a93226; }
+  .review label { font-size: 0.9rem; color: var(--muted); }
+  .review textarea {
+    width: 100%; box-sizing: border-box; min-height: 10rem; resize: vertical;
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px;
+    background: var(--paper-deep); color: var(--ink);
+    font: 0.85rem ui-monospace, Menlo, monospace;
+  }
+
   .vi { margin: 0; font-size: clamp(1.6rem, 5.2vw, 2.6rem); font-weight: 700; line-height: 1.25; text-wrap: balance; }
   .fr { margin: 0; font-size: clamp(1.1rem, 3.4vw, 1.6rem); color: var(--green); line-height: 1.3; text-wrap: balance; }
   .words { display: flex; flex-direction: column; gap: 4px; min-height: 6.5rem; justify-content: center; }
@@ -166,6 +189,15 @@
       <span>Après</span>
     </button>
   </div>
+
+  <section class="review" id="review" aria-label="Réglage des mots" hidden>
+    <h2>Réglage des mots</h2>
+    <p>Appuie sur Répéter, puis touche le gros bouton (ou Espace) à chaque mot chanté.</p>
+    <button class="tap" id="review-tap" type="button">Mot !</button>
+    <p id="review-status" aria-live="polite"></p>
+    <label for="review-output" id="review-label">À copier dans song.json</label>
+    <textarea id="review-output" readonly spellcheck="false"></textarea>
+  </section>
 </div>
 
 <audio id="song" preload="auto" src="__AUDIO__"></audio>
@@ -183,6 +215,7 @@
   let stopAt = null; // set while one sentence or one word is repeated
   let sungIndex = -1;
   let openedWord = null;
+  let recording = null; // review mode: { index, taps } while the user taps the words
 
   const images = sentences.map((sentence, index) => {
     const image = document.createElement("img");
@@ -210,6 +243,7 @@
   function show(index) {
     current = index;
     sungIndex = -1;
+    if (recording && recording.index !== index) recording = null;
     images.forEach((image, i) => { image.hidden = i !== index; });
     stepButtons.forEach((button, i) => button.setAttribute("aria-current", i === index ? "true" : "false"));
     closePanel();
@@ -226,6 +260,7 @@
     }));
     document.getElementById("fr").textContent = sentences[index].fr;
     document.getElementById("credit").textContent = credits[sentences[index].image];
+    refreshReview();
   }
 
   function openWord(word, button) {
@@ -268,11 +303,14 @@
   function repeatSentence() {
     song.currentTime = sentences[current].start;
     stopAt = sentences[current].end;
+    if (reviewMode()) recording = { index: current, taps: [] };
+    refreshReview();
     song.play();
   }
 
   function playWord() {
     if (!openedWord || typeof openedWord.start !== "number") return;
+    recording = null;
     song.currentTime = openedWord.start;
     stopAt = openedWord.end;
     song.play();
@@ -291,6 +329,61 @@
     if (index === sungIndex) return;
     sungIndex = index;
     document.querySelectorAll("#vi .word").forEach((button, i) => button.classList.toggle("sung", i === index));
+  }
+
+  function reviewMode() {
+    return location.hash === "#review";
+  }
+
+  function refreshReview() {
+    const on = reviewMode();
+    document.getElementById("review").hidden = !on;
+    document.querySelector(".page").classList.toggle("reviewing", on);
+    if (!on) { recording = null; return; }
+    const total = sentences[current].words.length;
+    const status = document.getElementById("review-status");
+    if (recording) status.textContent = "Mot " + recording.taps.length + " sur " + total;
+    else status.textContent = "Phrase " + (current + 1) + " : " + total + " mots.";
+  }
+
+  function tap() {
+    const status = document.getElementById("review-status");
+    if (!recording || song.paused) {
+      status.textContent = "Appuie d'abord sur Répéter.";
+      return;
+    }
+    const sentence = sentences[recording.index];
+    if (recording.taps.length >= sentence.words.length) return;
+    const time = Math.max(sentence.start, Math.min(sentence.end, song.currentTime));
+    const previous = recording.taps[recording.taps.length - 1];
+    if (previous !== undefined && time - previous < 0.1) return;
+    recording.taps.push(Math.round(time * 100) / 100);
+    highlight(recording.taps.length - 1);
+    refreshReview();
+    if (recording.taps.length === sentence.words.length) applyTaps();
+  }
+
+  function applyTaps() {
+    const sentence = sentences[recording.index];
+    const taps = recording.taps;
+    sentence.words.forEach((word, i) => {
+      word.start = taps[i];
+      word.end = i + 1 < taps.length ? taps[i + 1] : sentence.end;
+    });
+    document.getElementById("review-label").textContent =
+      "Phrase " + (recording.index + 1) + " : remplace « words » dans song.json par :";
+    document.getElementById("review-output").value = JSON.stringify(sentence.words, null, 2);
+    const status = document.getElementById("review-status");
+    status.textContent = "C'est noté ! Phrase " + (recording.index + 1) + " corrigée.";
+    recording = null;
+  }
+
+  function stopRecording() {
+    if (!recording) return;
+    const total = sentences[recording.index].words.length;
+    document.getElementById("review-status").textContent =
+      recording.taps.length + " mots sur " + total + ". Recommence avec Répéter.";
+    recording = null;
   }
 
   function togglePlay() {
@@ -316,20 +409,24 @@
       if (stopAt !== null && song.currentTime >= stopAt) {
         song.pause();
         stopAt = null;
+        stopRecording();
       } else if (stopAt === null) {
         const index = sentenceAt(song.currentTime);
         if (index !== current) show(index);
       }
-      highlight(song.paused ? -1 : wordAt(song.currentTime));
+      if (!recording) highlight(song.paused ? -1 : wordAt(song.currentTime));
     }
   }
 
   song.addEventListener("play", refreshPlayButton);
-  song.addEventListener("pause", () => { refreshPlayButton(); highlight(-1); });
+  song.addEventListener("pause", () => { refreshPlayButton(); stopRecording(); highlight(-1); });
   song.addEventListener("ended", refreshPlayButton);
   // Animation frames stop in a hidden tab; timeupdate still fires there, so stopAt holds.
   song.addEventListener("timeupdate", update);
   document.getElementById("panel-listen").addEventListener("click", playWord);
+  document.getElementById("review-tap").addEventListener("pointerdown", (event) => { event.preventDefault(); tap(); });
+  document.getElementById("review-output").addEventListener("focus", (event) => event.target.select());
+  window.addEventListener("hashchange", refreshReview);
   document.getElementById("play").addEventListener("click", togglePlay);
   document.getElementById("repeat").addEventListener("click", repeatSentence);
   document.getElementById("previous").addEventListener("click", () => goTo(current - 1));
@@ -337,6 +434,12 @@
   document.getElementById("panel-close").addEventListener("click", closePanel);
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closePanel();
+    if (event.target.closest("textarea")) return;
+    if (reviewMode() && event.key === " ") {
+      event.preventDefault();
+      if (!event.repeat) tap();
+      return;
+    }
     if (event.target.closest("button")) return;
     if (event.key === " ") { event.preventDefault(); togglePlay(); }
     if (event.key === "ArrowLeft") goTo(current - 1);
