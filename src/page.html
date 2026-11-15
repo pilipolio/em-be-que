@@ -1,0 +1,300 @@
+<meta charset="utf-8">
+<title>Em bé quê</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap">
+<style>
+  /* Layout: one screen, one column. Picture on top, the sentence under it, four big buttons at the bottom. */
+  /* Colours come from Đông Hồ prints: dó paper, soot ink, vermilion, leaf green. One look, no dark theme. */
+  :root {
+    color-scheme: light;
+    --paper: #f5eedc;
+    --paper-deep: #eadfc4;
+    --ink: #221c18;
+    --muted: #6d6152;
+    --line: #c9ba98;
+    --red: #c0392b;
+    --green: #2f6b4f;
+    --font: "Be Vietnam Pro", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 12px;
+    box-sizing: border-box;
+  }
+  .page {
+    height: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--red); }
+  header p { margin: 0; font-size: 0.95rem; color: var(--muted); }
+
+  .steps { display: flex; justify-content: center; gap: 6px; }
+  .steps button {
+    flex: 1 1 0; min-width: 0; max-width: 76px; aspect-ratio: 4 / 3;
+    padding: 0; overflow: hidden;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--paper-deep); cursor: pointer;
+  }
+  .steps img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .steps button[aria-current="true"] { border-color: var(--red); outline: 3px solid var(--red); }
+
+  .middle { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; position: relative; }
+  .view { min-height: 0; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .stage {
+    flex: 1; min-height: 0;
+    border: 1px solid var(--ink); border-radius: 8px;
+    background: var(--paper-deep);
+    overflow: hidden;
+  }
+  .stage img { width: 100%; height: 100%; max-width: 100%; object-fit: contain; display: block; }
+  .credit { margin: 0; font-size: 0.75rem; color: var(--muted); }
+
+  /* Word panel: a column at the right on a wide screen, over the picture on a phone. */
+  .panel {
+    min-height: 0; min-width: 0; overflow: auto;
+    display: flex; flex-direction: column; gap: 8px;
+    border: 1px solid var(--ink); border-radius: 8px;
+    background: var(--paper); padding: 12px;
+  }
+  .panel h2 { margin: 0; font-size: 2rem; font-weight: 700; color: var(--red); }
+  .panel .meaning { margin: 0; font-size: 1.4rem; color: var(--green); }
+  .panel img { width: 100%; max-height: 50%; object-fit: contain; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-deep); flex: 1; min-height: 0; }
+  .panel .close {
+    align-self: flex-end; min-height: 40px; padding: 0 12px;
+    border: 1px solid var(--ink); border-radius: 8px;
+    background: var(--paper); color: var(--ink);
+    font: 600 0.9rem var(--font); cursor: pointer;
+  }
+  @media (min-width: 720px) { .middle.open { grid-template-columns: minmax(0, 1fr) 280px; } }
+  @media (max-width: 719px) { .panel { position: absolute; inset: 0; } }
+
+  .vi .word {
+    font: inherit; color: inherit; background: none; cursor: pointer;
+    border: 0; border-bottom: 2px dotted var(--red); border-radius: 0;
+    padding: 0 2px; margin: 0 3px;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .vi .word:hover { background: var(--paper-deep); }
+  .vi .word[aria-pressed="true"] { background: var(--red); color: var(--paper); }
+
+  .vi { margin: 0; font-size: clamp(1.6rem, 5.2vw, 2.6rem); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+  .fr { margin: 0; font-size: clamp(1.1rem, 3.4vw, 1.6rem); color: var(--green); line-height: 1.3; text-wrap: balance; }
+  .words { display: flex; flex-direction: column; gap: 4px; min-height: 6.5rem; justify-content: center; }
+
+  .controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .controls button {
+    min-height: 64px; min-width: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    border: 1px solid var(--ink); border-radius: 10px;
+    background: var(--paper); color: var(--ink);
+    font: 600 0.9rem var(--font); cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+  .controls button:hover { background: var(--paper-deep); }
+  .controls .primary { background: var(--red); border-color: var(--red); color: var(--paper); }
+  .controls .primary:hover { background: #a93226; }
+  .controls svg { width: 26px; height: 26px; fill: currentColor; }
+  button:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+</style>
+
+<div class="page">
+  <header>
+    <h1>Em bé quê</h1>
+    <p>L'enfant de la campagne, une chanson de Phạm Duy</p>
+  </header>
+
+  <nav class="steps" id="steps" aria-label="Phrases de la chanson"></nav>
+
+  <div class="middle" id="middle">
+    <div class="view">
+      <div class="stage" id="stage"></div>
+      <p class="credit" id="credit"></p>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite" hidden>
+      <button class="close" id="panel-close" type="button">Fermer</button>
+      <h2 id="panel-word" lang="vi"></h2>
+      <p class="meaning" id="panel-meaning" lang="fr"></p>
+      <img id="panel-image" alt="" hidden>
+      <p class="credit" id="panel-credit"></p>
+    </aside>
+  </div>
+
+  <div class="words">
+    <p class="vi" id="vi" lang="vi"></p>
+    <p class="fr" id="fr" lang="fr"></p>
+  </div>
+
+  <div class="controls">
+    <button id="previous" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4 7 12l8.5 8z"/></svg>
+      <span>Avant</span>
+    </button>
+    <button id="repeat" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6l5 4.5V7a5.5 5.5 0 1 1-5.5 5.5h-2A7.5 7.5 0 1 0 12 5z"/></svg>
+      <span>Répéter</span>
+    </button>
+    <button id="play" type="button" class="primary">
+      <svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+      <span id="play-label">Écouter</span>
+    </button>
+    <button id="next" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4 17 12l-8.5 8z"/></svg>
+      <span>Après</span>
+    </button>
+  </div>
+</div>
+
+<audio id="song" preload="auto" src="__AUDIO__"></audio>
+
+<script>
+  const sentences = __SENTENCES__;
+  const credits = __CREDITS__;
+  const song = document.getElementById("song");
+  const stage = document.getElementById("stage");
+  const steps = document.getElementById("steps");
+  const PLAY_PATH = "M7 4v16l13-8z";
+  const PAUSE_PATH = "M6 4h4v16H6zM14 4h4v16h-4z";
+
+  let current = 0;
+  let stopAt = null; // set while one sentence is repeated
+
+  const images = sentences.map((sentence, index) => {
+    const image = document.createElement("img");
+    image.src = "img/" + sentence.image;
+    image.alt = sentence.fr;
+    image.hidden = index !== 0;
+    stage.appendChild(image);
+    return image;
+  });
+
+  const stepButtons = sentences.map((sentence, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = "step-" + (index + 1);
+    const thumbnail = document.createElement("img");
+    thumbnail.src = "img/" + sentence.image;
+    thumbnail.alt = "";
+    button.appendChild(thumbnail);
+    button.setAttribute("aria-label", "Phrase " + (index + 1));
+    button.addEventListener("click", () => goTo(index));
+    steps.appendChild(button);
+    return button;
+  });
+
+  function show(index) {
+    current = index;
+    images.forEach((image, i) => { image.hidden = i !== index; });
+    stepButtons.forEach((button, i) => button.setAttribute("aria-current", i === index ? "true" : "false"));
+    closePanel();
+    const line = document.getElementById("vi");
+    line.replaceChildren(...sentences[index].words.map((word, i) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "word";
+      button.id = "word-" + (i + 1);
+      button.textContent = word.vi;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", () => openWord(word, button));
+      return button;
+    }));
+    document.getElementById("fr").textContent = sentences[index].fr;
+    document.getElementById("credit").textContent = credits[sentences[index].image];
+  }
+
+  function openWord(word, button) {
+    const alreadyOpen = button.getAttribute("aria-pressed") === "true";
+    closePanel();
+    if (alreadyOpen) return;
+    button.setAttribute("aria-pressed", "true");
+    document.getElementById("panel-word").textContent = word.vi;
+    document.getElementById("panel-meaning").textContent = word.fr;
+    const image = document.getElementById("panel-image");
+    image.hidden = !word.image;
+    if (word.image) { image.src = "img/" + word.image; image.alt = word.fr; }
+    document.getElementById("panel-credit").textContent = word.image ? credits[word.image] : "";
+    document.getElementById("panel").hidden = false;
+    document.getElementById("middle").classList.add("open");
+  }
+
+  function closePanel() {
+    document.querySelectorAll(".word[aria-pressed='true']").forEach((b) => b.setAttribute("aria-pressed", "false"));
+    document.getElementById("panel").hidden = true;
+    document.getElementById("middle").classList.remove("open");
+  }
+
+  function sentenceAt(time) {
+    let index = 0;
+    sentences.forEach((sentence, i) => { if (time >= sentence.start) index = i; });
+    return index;
+  }
+
+  function goTo(index) {
+    const target = Math.max(0, Math.min(sentences.length - 1, index));
+    stopAt = null;
+    song.currentTime = sentences[target].start;
+    show(target);
+  }
+
+  function repeatSentence() {
+    song.currentTime = sentences[current].start;
+    stopAt = sentences[current].end;
+    song.play();
+  }
+
+  function togglePlay() {
+    if (!song.paused) { song.pause(); return; }
+    stopAt = null;
+    if (song.ended || song.currentTime >= song.duration - 0.2) song.currentTime = 0;
+    song.play();
+  }
+
+  function refreshPlayButton() {
+    const playing = !song.paused;
+    document.querySelector("#play-icon path").setAttribute("d", playing ? PAUSE_PATH : PLAY_PATH);
+    document.getElementById("play-label").textContent = playing ? "Pause" : "Écouter";
+  }
+
+  function tick() {
+    if (!song.paused) {
+      if (stopAt !== null && song.currentTime >= stopAt) {
+        song.pause();
+        stopAt = null;
+      } else if (stopAt === null) {
+        const index = sentenceAt(song.currentTime);
+        if (index !== current) show(index);
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  song.addEventListener("play", refreshPlayButton);
+  song.addEventListener("pause", refreshPlayButton);
+  song.addEventListener("ended", refreshPlayButton);
+  document.getElementById("play").addEventListener("click", togglePlay);
+  document.getElementById("repeat").addEventListener("click", repeatSentence);
+  document.getElementById("previous").addEventListener("click", () => goTo(current - 1));
+  document.getElementById("next").addEventListener("click", () => goTo(current + 1));
+  document.getElementById("panel-close").addEventListener("click", closePanel);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closePanel();
+    if (event.target.closest("button")) return;
+    if (event.key === " ") { event.preventDefault(); togglePlay(); }
+    if (event.key === "ArrowLeft") goTo(current - 1);
+    if (event.key === "ArrowRight") goTo(current + 1);
+    if (event.key === "r") repeatSentence();
+  });
+
+  show(0);
+  requestAnimationFrame(tick);
+</script>
