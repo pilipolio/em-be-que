@@ -13,30 +13,42 @@
       "words": [
         {
           "vi": "Ai",
-          "fr": "qui"
+          "fr": "qui",
+          "start": 3.46,
+          "end": 4.36
         },
         {
           "vi": "bảo",
-          "fr": "dire"
+          "fr": "dire",
+          "start": 4.36,
+          "end": 5.2
         },
         {
           "vi": "chăn",
           "fr": "garder les bêtes",
-          "image": "01-garder-les-buffles.jpg"
+          "image": "01-garder-les-buffles.jpg",
+          "start": 5.25,
+          "end": 6.19
         },
         {
           "vi": "trâu",
           "fr": "le buffle",
-          "image": "word-trau.jpg"
+          "image": "word-trau.jpg",
+          "start": 6.19,
+          "end": 7.19
         },
         {
           "vi": "là",
-          "fr": "c'est"
+          "fr": "c'est",
+          "start": 7.19,
+          "end": 8.06
         },
         {
           "vi": "khổ",
           "fr": "pénible, dur",
-          "image": "word-kho.jpg"
+          "image": "word-kho.jpg",
+          "start": 8.06,
+          "end": 8.9
         }
       ]
     },
@@ -50,20 +62,28 @@
         {
           "vi": "Chăn trâu",
           "fr": "garder les buffles",
-          "image": "01-garder-les-buffles.jpg"
+          "image": "01-garder-les-buffles.jpg",
+          "start": 10.18,
+          "end": 11.93
         },
         {
           "vi": "sướng",
           "fr": "heureux, content",
-          "image": "02-bonheur.jpg"
+          "image": "02-bonheur.jpg",
+          "start": 11.93,
+          "end": 12.75
         },
         {
           "vi": "lắm",
-          "fr": "très, beaucoup"
+          "fr": "très, beaucoup",
+          "start": 12.75,
+          "end": 13.59
         },
         {
           "vi": "chứ",
-          "fr": "bien sûr !"
+          "fr": "bien sûr !",
+          "start": 13.59,
+          "end": 15.1
         }
       ]
     },
@@ -77,31 +97,43 @@
         {
           "vi": "Ngồi",
           "fr": "être assis",
-          "image": "04-chanter.jpg"
+          "image": "04-chanter.jpg",
+          "start": 16.24,
+          "end": 17.21
         },
         {
           "vi": "mình trâu",
           "fr": "le dos du buffle",
-          "image": "02-bonheur.jpg"
+          "image": "02-bonheur.jpg",
+          "start": 17.21,
+          "end": 19.6
         },
         {
           "vi": "phất",
           "fr": "agiter",
-          "image": "word-phat.jpg"
+          "image": "word-phat.jpg",
+          "start": 19.61,
+          "end": 20.07
         },
         {
           "vi": "ngọn",
-          "fr": "la tige, le bout"
+          "fr": "la tige, le bout",
+          "start": 20.07,
+          "end": 20.95
         },
         {
           "vi": "cờ",
           "fr": "le drapeau",
-          "image": "word-phat.jpg"
+          "image": "word-phat.jpg",
+          "start": 20.95,
+          "end": 21.78
         },
         {
           "vi": "lau",
           "fr": "le roseau",
-          "image": "03-co-lau.jpg"
+          "image": "03-co-lau.jpg",
+          "start": 21.78,
+          "end": 22.89
         }
       ]
     },
@@ -114,21 +146,29 @@
       "words": [
         {
           "vi": "Và",
-          "fr": "et"
+          "fr": "et",
+          "start": 23.44,
+          "end": 24.35
         },
         {
           "vi": "miệng",
-          "fr": "la bouche"
+          "fr": "la bouche",
+          "start": 24.36,
+          "end": 25.17
         },
         {
           "vi": "hát",
           "fr": "chanter",
-          "image": "word-hat.jpg"
+          "image": "word-hat.jpg",
+          "start": 25.17,
+          "end": 25.96
         },
         {
           "vi": "nghêu ngao",
           "fr": "chantonner, fredonner",
-          "image": "04-chanter.jpg"
+          "image": "04-chanter.jpg",
+          "start": 25.97,
+          "end": 28.89
         }
       ]
     },
@@ -141,24 +181,34 @@
       "words": [
         {
           "vi": "Vui thú",
-          "fr": "s'amuser"
+          "fr": "s'amuser",
+          "start": 29.32,
+          "end": 31.77
         },
         {
           "vi": "không",
-          "fr": "ne … pas"
+          "fr": "ne … pas",
+          "start": 31.77,
+          "end": 32.5
         },
         {
           "vi": "quên",
-          "fr": "oublier"
+          "fr": "oublier",
+          "start": 32.51,
+          "end": 33.18
         },
         {
           "vi": "học",
           "fr": "étudier, apprendre",
-          "image": "word-hoc.jpg"
+          "image": "word-hoc.jpg",
+          "start": 33.19,
+          "end": 33.89
         },
         {
           "vi": "đâu",
-          "fr": "pas du tout"
+          "fr": "pas du tout",
+          "start": 33.9,
+          "end": 34.53
         }
       ]
     },
@@ -171,26 +221,36 @@
       "words": [
         {
           "vi": "Nằm",
-          "fr": "être allongé"
+          "fr": "être allongé",
+          "start": 35.42,
+          "end": 36.24
         },
         {
           "vi": "đồi",
           "fr": "la colline",
-          "image": "06-colline.jpg"
+          "image": "06-colline.jpg",
+          "start": 36.25,
+          "end": 36.9
         },
         {
           "vi": "non",
           "fr": "jeune, tendre",
-          "image": "word-non.jpg"
+          "image": "word-non.jpg",
+          "start": 36.91,
+          "end": 37.64
         },
         {
           "vi": "gió",
           "fr": "le vent",
-          "image": "word-gio.jpg"
+          "image": "word-gio.jpg",
+          "start": 37.65,
+          "end": 38.45
         },
         {
           "vi": "mát",
-          "fr": "frais"
+          "fr": "frais",
+          "start": 38.45,
+          "end": 39.89
         }
       ]
     },
@@ -204,29 +264,41 @@
         {
           "vi": "Cất tiếng",
           "fr": "se mettre à chanter",
-          "image": "word-hat.jpg"
+          "image": "word-hat.jpg",
+          "start": 40.25,
+          "end": 41.65
         },
         {
           "vi": "theo",
           "fr": "suivre",
-          "image": "word-theo.jpg"
+          "image": "word-theo.jpg",
+          "start": 41.69,
+          "end": 42.63
         },
         {
           "vi": "tiếng",
-          "fr": "le son, la voix"
+          "fr": "le son, la voix",
+          "start": 42.93,
+          "end": 43.39
         },
         {
           "vi": "lúa",
           "fr": "le riz",
-          "image": "word-lua.jpg"
+          "image": "word-lua.jpg",
+          "start": 43.4,
+          "end": 44.21
         },
         {
           "vi": "đang",
-          "fr": "en train de"
+          "fr": "en train de",
+          "start": 44.22,
+          "end": 44.97
         },
         {
           "vi": "reo",
-          "fr": "bruire, chanter de joie"
+          "fr": "bruire, chanter de joie",
+          "start": 44.98,
+          "end": 46.1
         }
       ]
     },
@@ -240,21 +312,29 @@
         {
           "vi": "Em",
           "fr": "moi, l'enfant",
-          "image": "08-epeler.jpg"
+          "image": "08-epeler.jpg",
+          "start": 46.54,
+          "end": 47.27
         },
         {
           "vi": "đánh vần",
           "fr": "épeler",
-          "image": "word-danh-van.jpg"
+          "image": "word-danh-van.jpg",
+          "start": 47.28,
+          "end": 48.93
         },
         {
           "vi": "thật",
-          "fr": "vraiment"
+          "fr": "vraiment",
+          "start": 48.95,
+          "end": 49.76
         },
         {
           "vi": "mau",
           "fr": "vite",
-          "image": "word-mau.jpg"
+          "image": "word-mau.jpg",
+          "start": 49.77,
+          "end": 52.42
         }
       ]
     }

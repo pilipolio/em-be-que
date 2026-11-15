@@ -86,7 +86,16 @@
     transition: background-color 150ms ease, color 150ms ease;
   }
   .vi .word:hover { background: var(--paper-deep); }
+  .vi .word.sung { background: var(--green); color: var(--paper); }
   .vi .word[aria-pressed="true"] { background: var(--red); color: var(--paper); }
+  .panel .listen {
+    min-height: 48px; padding: 0 12px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    border: 1px solid var(--green); border-radius: 10px;
+    background: var(--green); color: var(--paper);
+    font: 600 1rem var(--font); cursor: pointer;
+  }
+  .panel .listen svg { width: 22px; height: 22px; fill: currentColor; }
 
   .vi { margin: 0; font-size: clamp(1.6rem, 5.2vw, 2.6rem); font-weight: 700; line-height: 1.25; text-wrap: balance; }
   .fr { margin: 0; font-size: clamp(1.1rem, 3.4vw, 1.6rem); color: var(--green); line-height: 1.3; text-wrap: balance; }
@@ -125,6 +134,10 @@
       <button class="close" id="panel-close" type="button">Fermer</button>
       <h2 id="panel-word" lang="vi"></h2>
       <p class="meaning" id="panel-meaning" lang="fr"></p>
+      <button class="listen" id="panel-listen" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>
+        <span>Écouter le mot</span>
+      </button>
       <img id="panel-image" alt="" hidden>
       <p class="credit" id="panel-credit"></p>
     </aside>
@@ -167,7 +180,9 @@
   const PAUSE_PATH = "M6 4h4v16H6zM14 4h4v16h-4z";
 
   let current = 0;
-  let stopAt = null; // set while one sentence is repeated
+  let stopAt = null; // set while one sentence or one word is repeated
+  let sungIndex = -1;
+  let openedWord = null;
 
   const images = sentences.map((sentence, index) => {
     const image = document.createElement("img");
@@ -194,6 +209,7 @@
 
   function show(index) {
     current = index;
+    sungIndex = -1;
     images.forEach((image, i) => { image.hidden = i !== index; });
     stepButtons.forEach((button, i) => button.setAttribute("aria-current", i === index ? "true" : "false"));
     closePanel();
@@ -216,7 +232,9 @@
     const alreadyOpen = button.getAttribute("aria-pressed") === "true";
     closePanel();
     if (alreadyOpen) return;
+    openedWord = word;
     button.setAttribute("aria-pressed", "true");
+    document.getElementById("panel-listen").hidden = typeof word.start !== "number";
     document.getElementById("panel-word").textContent = word.vi;
     document.getElementById("panel-meaning").textContent = word.fr;
     const image = document.getElementById("panel-image");
@@ -228,6 +246,7 @@
   }
 
   function closePanel() {
+    openedWord = null;
     document.querySelectorAll(".word[aria-pressed='true']").forEach((b) => b.setAttribute("aria-pressed", "false"));
     document.getElementById("panel").hidden = true;
     document.getElementById("middle").classList.remove("open");
@@ -252,6 +271,28 @@
     song.play();
   }
 
+  function playWord() {
+    if (!openedWord || typeof openedWord.start !== "number") return;
+    song.currentTime = openedWord.start;
+    stopAt = openedWord.end;
+    song.play();
+  }
+
+  // The sung word runs from its start to the next word's start: held vowels outlast the aligned end.
+  function wordAt(time) {
+    const sentence = sentences[current];
+    if (time < sentence.start || time >= sentence.end) return -1;
+    let index = -1;
+    sentence.words.forEach((word, i) => { if (typeof word.start === "number" && time >= word.start) index = i; });
+    return index;
+  }
+
+  function highlight(index) {
+    if (index === sungIndex) return;
+    sungIndex = index;
+    document.querySelectorAll("#vi .word").forEach((button, i) => button.classList.toggle("sung", i === index));
+  }
+
   function togglePlay() {
     if (!song.paused) { song.pause(); return; }
     stopAt = null;
@@ -266,6 +307,11 @@
   }
 
   function tick() {
+    update();
+    requestAnimationFrame(tick);
+  }
+
+  function update() {
     if (!song.paused) {
       if (stopAt !== null && song.currentTime >= stopAt) {
         song.pause();
@@ -274,13 +320,16 @@
         const index = sentenceAt(song.currentTime);
         if (index !== current) show(index);
       }
+      highlight(song.paused ? -1 : wordAt(song.currentTime));
     }
-    requestAnimationFrame(tick);
   }
 
   song.addEventListener("play", refreshPlayButton);
-  song.addEventListener("pause", refreshPlayButton);
+  song.addEventListener("pause", () => { refreshPlayButton(); highlight(-1); });
   song.addEventListener("ended", refreshPlayButton);
+  // Animation frames stop in a hidden tab; timeupdate still fires there, so stopAt holds.
+  song.addEventListener("timeupdate", update);
+  document.getElementById("panel-listen").addEventListener("click", playWord);
   document.getElementById("play").addEventListener("click", togglePlay);
   document.getElementById("repeat").addEventListener("click", repeatSentence);
   document.getElementById("previous").addEventListener("click", () => goTo(current - 1));
