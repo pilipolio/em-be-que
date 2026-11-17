@@ -4,6 +4,7 @@
   "vi": "rùa biển",
   "fr": "tortue marine",
   "image": "img/1730714799858.jpg",
+  "thumbnail": "thumb/1730714799858.jpg",
   "audio": "audio/1730714799858.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -12,6 +13,7 @@
   "vi": "cá mập",
   "fr": "requin, squale",
   "image": "img/1730778542729.jpg",
+  "thumbnail": "thumb/1730778542729.jpg",
   "audio": "audio/1730778542729.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -20,6 +22,7 @@
   "vi": "sao biển",
   "fr": "étoile de mer",
   "image": "img/1730779115970.jpg",
+  "thumbnail": "thumb/1730779115970.jpg",
   "audio": "audio/1730779115970.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -28,6 +31,7 @@
   "vi": "cá voi",
   "fr": "baleine",
   "image": "img/1730780047464.jpg",
+  "thumbnail": "thumb/1730780047464.jpg",
   "audio": "audio/1730780047464.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -36,6 +40,7 @@
   "vi": "bạch tuộc",
   "fr": "pieuvre",
   "image": "img/1730780254712.jpg",
+  "thumbnail": "thumb/1730780254712.jpg",
   "audio": "audio/1730780254712.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -44,6 +49,7 @@
   "vi": "con sứa",
   "fr": "méduse",
   "image": "img/1730781147286.jpg",
+  "thumbnail": "thumb/1730781147286.jpg",
   "audio": "audio/1730781147286.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -52,6 +58,7 @@
   "vi": "cá ngựa",
   "fr": "hippocampe",
   "image": "img/1730785295331.jpg",
+  "thumbnail": "thumb/1730785295331.jpg",
   "audio": "audio/1730785295331.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -60,6 +67,7 @@
   "vi": "cua biển",
   "fr": "crabe",
   "image": "img/1730861956492.jpg",
+  "thumbnail": "thumb/1730861956492.jpg",
   "audio": "audio/1730861956492.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -68,6 +76,7 @@
   "vi": "con bướm",
   "fr": "papillon ≠ papillon de nuit",
   "image": "img/1731059121816.jpg",
+  "thumbnail": "thumb/1731059121816.jpg",
   "audio": "audio/1731059121816.mp3",
   "audio_source": "deck"
  },
@@ -76,6 +85,7 @@
   "vi": "con sư tử",
   "fr": "lion, lionne",
   "image": "img/1733652908435.jpg",
+  "thumbnail": "thumb/1733652908435.jpg",
   "audio": "audio/1733652908435.mp3",
   "audio_source": "deck"
  },
@@ -84,6 +94,7 @@
   "vi": "con gấu",
   "fr": "ours",
   "image": "img/1733724306263.jpg",
+  "thumbnail": "thumb/1733724306263.jpg",
   "audio": "audio/1733724306263.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -92,6 +103,7 @@
   "vi": "con tê giác",
   "fr": "rhinocéros",
   "image": "img/1733725082150.jpg",
+  "thumbnail": "thumb/1733725082150.jpg",
   "audio": "audio/1733725082150.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -100,6 +112,7 @@
   "vi": "con hươu cao cổ",
   "fr": "girafe",
   "image": "img/1733730545222.jpg",
+  "thumbnail": "thumb/1733730545222.jpg",
   "audio": "audio/1733730545222.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -108,6 +121,7 @@
   "vi": "con báo đốm",
   "fr": "jaguar",
   "image": "img/1733731405189.jpg",
+  "thumbnail": "thumb/1733731405189.jpg",
   "audio": "audio/1733731405189.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -116,6 +130,7 @@
   "vi": "con voi",
   "fr": "éléphant",
   "image": "img/1733736382285.jpg",
+  "thumbnail": "thumb/1733736382285.jpg",
   "audio": "audio/1733736382285.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -124,6 +139,7 @@
   "vi": "con ngựa vằn",
   "fr": "zèbre",
   "image": "img/1733801455233.jpg",
+  "thumbnail": "thumb/1733801455233.jpg",
   "audio": "audio/1733801455233.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -132,6 +148,7 @@
   "vi": "con gấu trúc",
   "fr": "panda",
   "image": "img/1733802701762.jpg",
+  "thumbnail": "thumb/1733802701762.jpg",
   "audio": "audio/1733802701762.mp3",
   "audio_source": "deck"
  },
@@ -140,6 +157,7 @@
   "vi": "con nai",
   "fr": "cerf",
   "image": "img/1733817002991.jpg",
+  "thumbnail": "thumb/1733817002991.jpg",
   "audio": "audio/1733817002991.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -148,6 +166,7 @@
   "vi": "con hà mã",
   "fr": "hippopotame",
   "image": "img/1733818438441.jpg",
+  "thumbnail": "thumb/1733818438441.jpg",
   "audio": "audio/1733818438441.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -156,6 +175,7 @@
   "vi": "con chuồn chuồn",
   "fr": "libellule",
   "image": "img/1737688691741.jpg",
+  "thumbnail": "thumb/1737688691741.jpg",
   "audio": "audio/1737688691741.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -164,6 +184,7 @@
   "vi": "con bọ rùa",
   "fr": "coccinelle",
   "image": "img/1737689233912.jpg",
+  "thumbnail": "thumb/1737689233912.jpg",
   "audio": "audio/1737689233912.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -172,6 +193,7 @@
   "vi": "con dế",
   "fr": "grillons",
   "image": "img/1737689992707.jpg",
+  "thumbnail": "thumb/1737689992707.jpg",
   "audio": "audio/1737689992707.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -180,6 +202,7 @@
   "vi": "con kiến",
   "fr": "fourmi",
   "image": "img/1737690842783.jpg",
+  "thumbnail": "thumb/1737690842783.jpg",
   "audio": "audio/1737690842783.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -188,6 +211,7 @@
   "vi": "con mối",
   "fr": "termite",
   "image": "img/1737691497121.jpg",
+  "thumbnail": "thumb/1737691497121.jpg",
   "audio": "audio/1737691497121.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -196,6 +220,7 @@
   "vi": "con muỗi",
   "fr": "moustique",
   "image": "img/1737691843372.jpg",
+  "thumbnail": "thumb/1737691843372.jpg",
   "audio": "audio/1737691843372.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -204,6 +229,7 @@
   "vi": "con nhện",
   "fr": "araignée",
   "image": "img/1737697869502.jpg",
+  "thumbnail": "thumb/1737697869502.jpg",
   "audio": "audio/1737697869502.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -212,6 +238,7 @@
   "vi": "con ong",
   "fr": "abeille",
   "image": "img/1737707161235.jpg",
+  "thumbnail": "thumb/1737707161235.jpg",
   "audio": "audio/1737707161235.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -220,6 +247,7 @@
   "vi": "con bọ hung",
   "fr": "scarabée",
   "image": "img/1737708223882.jpg",
+  "thumbnail": "thumb/1737708223882.jpg",
   "audio": "audio/1737708223882.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -228,6 +256,7 @@
   "vi": "con châu chấu",
   "fr": "sauterelle",
   "image": "img/1737709458272.jpg",
+  "thumbnail": "thumb/1737709458272.jpg",
   "audio": "audio/1737709458272.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -236,6 +265,7 @@
   "vi": "gấu Bắc Cực",
   "fr": "ours polaire",
   "image": "img/1738748669175.jpg",
+  "thumbnail": "thumb/1738748669175.jpg",
   "audio": "audio/1738748669175.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -244,6 +274,7 @@
   "vi": "chim cánh cụt",
   "fr": "pingouin",
   "image": "img/1738834491523.jpg",
+  "thumbnail": "thumb/1738834491523.jpg",
   "audio": "audio/1738834491523.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -252,6 +283,7 @@
   "vi": "sư tử biển",
   "fr": "lion de mer",
   "image": "img/1738909122112.jpg",
+  "thumbnail": "thumb/1738909122112.jpg",
   "audio": "audio/1738909122112.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -260,6 +292,7 @@
   "vi": "cáo bắc cực",
   "fr": "renard polaire",
   "image": "img/1739889851106.jpg",
+  "thumbnail": "thumb/1739889851106.jpg",
   "audio": "audio/1739889851106.mp3",
   "audio_source": "deck"
  },
@@ -268,6 +301,7 @@
   "vi": "hải cẩu thật sự",
   "fr": "phoque",
   "image": "img/1739891004659.jpg",
+  "thumbnail": "thumb/1739891004659.jpg",
   "audio": "audio/1739891004659.mp3",
   "audio_source": "deck"
  },
@@ -276,6 +310,7 @@
   "vi": "cá voi sát thủ",
   "fr": "orque",
   "image": "img/1739893654827.jpg",
+  "thumbnail": "thumb/1739893654827.jpg",
   "audio": "audio/1739893654827.mp3",
   "audio_source": "deck"
  },
@@ -284,6 +319,7 @@
   "vi": "con cừu",
   "fr": "mouton",
   "image": "img/1739894742074.jpg",
+  "thumbnail": "thumb/1739894742074.jpg",
   "audio": "audio/1739894742074.mp3",
   "audio_source": "deck"
  },
@@ -292,6 +328,7 @@
   "vi": "con dê",
   "fr": "chèvre",
   "image": "img/1739895465097.jpg",
+  "thumbnail": "thumb/1739895465097.jpg",
   "audio": "audio/1739895465097.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -300,6 +337,7 @@
   "vi": "bò sữa",
   "fr": "vache laitière",
   "image": "img/1739897315399.jpg",
+  "thumbnail": "thumb/1739897315399.jpg",
   "audio": "audio/1739897315399.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -308,6 +346,7 @@
   "vi": "con vịt",
   "fr": "canard",
   "image": "img/1739898266030.jpg",
+  "thumbnail": "thumb/1739898266030.jpg",
   "audio": "audio/1739898266030.mp3",
   "audio_source": "deck"
  },
@@ -316,6 +355,7 @@
   "vi": "con lợn",
   "fr": "cochon",
   "image": "img/1739957491947.jpg",
+  "thumbnail": "thumb/1739957491947.jpg",
   "audio": "audio/1739957491947.mp3",
   "audio_source": "deck"
  },
@@ -324,6 +364,7 @@
   "vi": "con thỏ",
   "fr": "lapin",
   "image": "img/1739959104671.jpg",
+  "thumbnail": "thumb/1739959104671.jpg",
   "audio": "audio/1739959104671.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -332,6 +373,7 @@
   "vi": "con ngựa",
   "fr": "cheval",
   "image": "img/1739959633561.jpg",
+  "thumbnail": "thumb/1739959633561.jpg",
   "audio": "audio/1739959633561.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -340,6 +382,7 @@
   "vi": "gà mái",
   "fr": "poule",
   "image": "img/1739960615287.jpg",
+  "thumbnail": "thumb/1739960615287.jpg",
   "audio": "audio/1739960615287.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -348,6 +391,7 @@
   "vi": "gà trống",
   "fr": "coq",
   "image": "img/1739961819031.jpg",
+  "thumbnail": "thumb/1739961819031.jpg",
   "audio": "audio/1739961819031.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -356,6 +400,7 @@
   "vi": "con lừa",
   "fr": "âne",
   "image": "img/1739970827729.jpg",
+  "thumbnail": "thumb/1739970827729.jpg",
   "audio": "audio/1739970827729.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -364,6 +409,7 @@
   "vi": "con bò",
   "fr": "taureau",
   "image": "img/1740056652333.jpg",
+  "thumbnail": "thumb/1740056652333.jpg",
   "audio": "audio/1740056652333.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -372,6 +418,7 @@
   "vi": "gà tây",
   "fr": "dinde",
   "image": "img/1740057813183.jpg",
+  "thumbnail": "thumb/1740057813183.jpg",
   "audio": "audio/1740057813183.mp3",
   "audio_source": "deck"
  },
@@ -380,6 +427,7 @@
   "vi": "con chó",
   "fr": "chien",
   "image": "img/1740058580938.jpg",
+  "thumbnail": "thumb/1740058580938.jpg",
   "audio": "audio/1740058580938.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -388,6 +436,7 @@
   "vi": "con mèo",
   "fr": "chat",
   "image": "img/1740068464913.jpg",
+  "thumbnail": "thumb/1740068464913.jpg",
   "audio": "audio/1740068464913.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -396,6 +445,7 @@
   "vi": "con ngỗng",
   "fr": "oie",
   "image": "img/1740072527515.jpg",
+  "thumbnail": "thumb/1740072527515.jpg",
   "audio": "audio/1740072527515.mp3",
   "audio_source": "deck"
  },
@@ -404,6 +454,7 @@
   "vi": "con trâu",
   "fr": "buffle, buffle d'eau",
   "image": "img/1740077241536.jpg",
+  "thumbnail": "thumb/1740077241536.jpg",
   "audio": "audio/1740077241536.mp3",
   "audio_source": "deck"
  },
@@ -412,6 +463,7 @@
   "vi": "con khỉ",
   "fr": "singe",
   "image": "img/1740154651886.jpg",
+  "thumbnail": "thumb/1740154651886.jpg",
   "audio": "audio/1740154651886.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -420,6 +472,7 @@
   "vi": "con sóc",
   "fr": "écureuil",
   "image": "img/1740155464694.jpg",
+  "thumbnail": "thumb/1740155464694.jpg",
   "audio": "audio/1740155464694.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -428,6 +481,7 @@
   "vi": "con hổ",
   "fr": "tigre",
   "image": "img/1740218193518.jpg",
+  "thumbnail": "thumb/1740218193518.jpg",
   "audio": "audio/1740218193518.mp3",
   "audio_source": "deck"
  },
@@ -436,6 +490,7 @@
   "vi": "chó sói",
   "fr": "loup",
   "image": "img/1740218908765.jpg",
+  "thumbnail": "thumb/1740218908765.jpg",
   "audio": "audio/1740218908765.mp3",
   "audio_source": "deck"
  },
@@ -444,6 +499,7 @@
   "vi": "chim gõ kiến",
   "fr": "pic, pivert",
   "image": "img/1740219680788.jpg",
+  "thumbnail": "thumb/1740219680788.jpg",
   "audio": "audio/1740219680788.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -452,6 +508,7 @@
   "vi": "con cáo",
   "fr": "renard",
   "image": "img/1740220567961.jpg",
+  "thumbnail": "thumb/1740220567961.jpg",
   "audio": "audio/1740220567961.mp3",
   "audio_source": "deck"
  },
@@ -460,6 +517,7 @@
   "vi": "thỏ rừng",
   "fr": "lièvre",
   "image": "img/1740222498803.jpg",
+  "thumbnail": "thumb/1740222498803.jpg",
   "audio": "audio/1740222498803.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -468,6 +526,7 @@
   "vi": "con rắn",
   "fr": "serpent",
   "image": "img/1740223866622.jpg",
+  "thumbnail": "thumb/1740223866622.jpg",
   "audio": "audio/1740223866622.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -476,6 +535,7 @@
   "vi": "cá sấu",
   "fr": "crocodile",
   "image": "img/1740227675849.jpg",
+  "thumbnail": "thumb/1740227675849.jpg",
   "audio": "audio/1740227675849.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -484,6 +544,7 @@
   "vi": "chim đại bàng",
   "fr": "aigle",
   "image": "img/1740228298474.jpg",
+  "thumbnail": "thumb/1740228298474.jpg",
   "audio": "audio/1740228298474.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -492,6 +553,7 @@
   "vi": "con vẹt",
   "fr": "perroquet",
   "image": "img/1740229726530.jpg",
+  "thumbnail": "thumb/1740229726530.jpg",
   "audio": "audio/1740229726530.mp3",
   "audio_source": "deck"
  },
@@ -500,6 +562,7 @@
   "vi": "con cò",
   "fr": "cigogne",
   "image": "img/1740231491397.jpg",
+  "thumbnail": "thumb/1740231491397.jpg",
   "audio": "audio/1740231491397.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -508,6 +571,7 @@
   "vi": "chim bồ nông",
   "fr": "pélican",
   "image": "img/1741505917819.jpg",
+  "thumbnail": "thumb/1741505917819.jpg",
   "audio": "audio/1741505917819.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -516,6 +580,7 @@
   "vi": "chim én",
   "fr": "hirondelle",
   "image": "img/1741507110309.jpg",
+  "thumbnail": "thumb/1741507110309.jpg",
   "audio": "audio/1741507110309.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -524,6 +589,7 @@
   "vi": "chim cú mèo",
   "fr": "hibou, chouette",
   "image": "img/1741508376818.jpg",
+  "thumbnail": "thumb/1741508376818.jpg",
   "audio": "audio/1741508376818.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -532,6 +598,7 @@
   "vi": "chim hồng hạc",
   "fr": "flamant rose",
   "image": "img/1741510068560.jpg",
+  "thumbnail": "thumb/1741510068560.jpg",
   "audio": "audio/1741510068560.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -540,6 +607,7 @@
   "vi": "chim công",
   "fr": "paon",
   "image": "img/1741595131910.jpg",
+  "thumbnail": "thumb/1741595131910.jpg",
   "audio": "audio/1741595131910.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -548,6 +616,7 @@
   "vi": "chim thiên nga",
   "fr": "cygne",
   "image": "img/1741596192803.jpg",
+  "thumbnail": "thumb/1741596192803.jpg",
   "audio": "audio/1741596192803.m4a",
   "audio_source": "macOS voice Linh"
  },
@@ -556,6 +625,7 @@
   "vi": "chim bói cá",
   "fr": "martin-pêcheur",
   "image": "img/1741598152180.jpg",
+  "thumbnail": "thumb/1741598152180.jpg",
   "audio": "audio/1741598152180.m4a",
   "audio_source": "macOS voice Linh"
  }

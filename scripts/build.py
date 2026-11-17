@@ -1,7 +1,7 @@
-"""Build dist/index.html (the song) and dist/animaux.html (the animal game).
+"""Build dist/index.html (the song), dist/animaux.html (the animal game) and dist/imagier.html (all animals).
 
 The song audio goes into the page as a data URI. The images stay as files in dist/img.
-The animal game reads anki/animal.json; its pictures and sounds stay as files in dist/anki.
+The animal pages read anki/animal.json; its pictures and sounds stay as files in dist/anki.
 The Claude artifact host wraps the page in a document itself. Any other host needs --standalone.
 Usage: python3 scripts/build.py [--standalone]
 """
@@ -40,8 +40,9 @@ def main() -> None:
 
     animals = json.loads((ROOT / "anki" / "animal.json").read_text())
     shutil.copytree(ROOT / "assets" / "anki", DIST / "anki", dirs_exist_ok=True)
-    game = (ROOT / "src" / "animaux.html").read_text()
-    write(game.replace("__ANIMALS__", json.dumps(animals, ensure_ascii=False)), "animaux.html")
+    for name in ("animaux.html", "imagier.html"):
+        page = (ROOT / "src" / name).read_text()
+        write(page.replace("__ANIMALS__", json.dumps(animals, ensure_ascii=False)), name)
 
 
 def write(page: str, name: str) -> None:

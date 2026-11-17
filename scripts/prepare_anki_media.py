@@ -1,6 +1,6 @@
 """Copy the pictures and word sounds of one category from anki-deck/ to assets/anki/, and write anki/<category>.json.
 
-The pictures become 640 px JPEG. A note without a word sound in the deck gets one from the macOS
+The pictures become 640 px JPEG, with a 240 px thumbnail. A note without a word sound in the deck gets one from the macOS
 Vietnamese voice "Linh".
 Usage: python3 scripts/prepare_anki_media.py [category]   (default: animal)
 """
@@ -16,11 +16,17 @@ DECK_DIR = ROOT / "anki-deck"
 OUT = ROOT / "assets" / "anki"
 
 
+def resize(source: Path, size: int, target: Path) -> None:
+    command = ["sips", "-Z", str(size), "-s", "format", "jpeg", "-s", "formatOptions", "75"]
+    subprocess.run([*command, str(source), "--out", str(target)], check=True, capture_output=True)
+
+
 def main() -> None:
     category = sys.argv[1] if len(sys.argv) > 1 else "animal"
     notes = json.loads((ROOT / "anki" / "deck.json").read_text())["notes"]
     media = {name: number for number, name in json.loads((DECK_DIR / "media").read_text()).items()}
     (OUT / "img").mkdir(parents=True, exist_ok=True)
+    (OUT / "thumb").mkdir(parents=True, exist_ok=True)
     (OUT / "audio").mkdir(parents=True, exist_ok=True)
 
     items = []
@@ -28,34 +34,31 @@ def main() -> None:
         if note["category"] != category or "excluded" in note or not note["pictures"]:
             continue
         image = f"img/{note['id']}.jpg"
-        subprocess.run(
-            [
-                "sips",
-                "-Z",
-                "640",
-                "-s",
-                "format",
-                "jpeg",
-                "-s",
-                "formatOptions",
-                "75",
-                str(DECK_DIR / media[note["pictures"][0]]),
-                "--out",
-                str(OUT / image),
-            ],
-            check=True,
-            capture_output=True,
-        )
+        thumbnail = f"thumb/{note['id']}.jpg"
+        picture = DECK_DIR / media[note["pictures"][0]]
+        resize(picture, 640, OUT / image)
+        resize(picture, 240, OUT / thumbnail)
         if note["word_sound"]:
             audio = f"audio/{note['id']}.mp3"
             shutil.copy(DECK_DIR / media[note["word_sound"]], OUT / audio)
             audio_source = "deck"
         else:
             audio = f"audio/{note['id']}.m4a"
-            subprocess.run(
-                ["say", "-v", "Linh", "--file-format=m4af", "--data-format=aac", "-o", str(OUT / audio), note["word"]],
-                check=True,
-            )
+            # Each run of say gives new bytes for the same speech: keep the file in git.
+            if not (OUT / audio).exists():
+                subprocess.run(
+                    [
+                        "say",
+                        "-v",
+                        "Linh",
+                        "--file-format=m4af",
+                        "--data-format=aac",
+                        "-o",
+                        str(OUT / audio),
+                        note["word"],
+                    ],
+                    check=True,
+                )
             audio_source = "macOS voice Linh"
         items.append(
             {
@@ -63,6 +66,7 @@ def main() -> None:
                 "vi": note["word"],
                 "fr": note["fr"],
                 "image": image,
+                "thumbnail": thumbnail,
                 "audio": audio,
                 "audio_source": audio_source,
             }
