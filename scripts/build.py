@@ -1,6 +1,7 @@
-"""Build dist/index.html from src/page.html, song.json and the assets.
+"""Build dist/index.html (the song) and dist/animaux.html (the animal game).
 
-The audio goes into the page as a data URI. The images stay as files in dist/img.
+The song audio goes into the page as a data URI. The images stay as files in dist/img.
+The animal game reads anki/animal.json; its pictures and sounds stay as files in dist/anki.
 The Claude artifact host wraps the page in a document itself. Any other host needs --standalone.
 Usage: python3 scripts/build.py [--standalone]
 """
@@ -35,10 +36,19 @@ def main() -> None:
     (DIST / "img").mkdir(parents=True, exist_ok=True)
     for name in credits:
         shutil.copy(ROOT / "assets" / "img" / name, DIST / "img" / name)
+    write(page, "index.html")
+
+    animals = json.loads((ROOT / "anki" / "animal.json").read_text())
+    shutil.copytree(ROOT / "assets" / "anki", DIST / "anki", dirs_exist_ok=True)
+    game = (ROOT / "src" / "animaux.html").read_text()
+    write(game.replace("__ANIMALS__", json.dumps(animals, ensure_ascii=False)), "animaux.html")
+
+
+def write(page: str, name: str) -> None:
     if "--standalone" in sys.argv:
         page = STANDALONE_HEAD + page + "</body>\n</html>\n"
-    (DIST / "index.html").write_text(page)
-    print(f"wrote {DIST / 'index.html'} ({len(page) // 1024} kB)")
+    (DIST / name).write_text(page)
+    print(f"wrote {DIST / name} ({len(page) // 1024} kB)")
 
 
 if __name__ == "__main__":

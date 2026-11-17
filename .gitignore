@@ -2,3 +2,4 @@ dist/
 candidates/
 __pycache__/
 .DS_Store
+anki-deck/
