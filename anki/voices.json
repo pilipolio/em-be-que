@@ -1,0 +1,221 @@
+{
+ "recordings": [
+  {
+   "file": "assets/voice/2026-11-18-animaux-1.m4a",
+   "speaker": "grand-père",
+   "clips": [
+    {
+     "id": 1730714799858,
+     "vi": "con rùa biển",
+     "fr": "tortue marine",
+     "use": 0,
+     "takes": [
+      {
+       "start": 20.15,
+       "end": 22.13,
+       "heard": "con rùa biển."
+      },
+      {
+       "start": 22.87,
+       "end": 24.79,
+       "heard": "con rùa biển."
+      }
+     ]
+    },
+    {
+     "id": 1730778542729,
+     "vi": "con cá mập",
+     "fr": "requin, squale",
+     "use": 0,
+     "takes": [
+      {
+       "start": 26.46,
+       "end": 27.99,
+       "heard": "Còn cá mập."
+      },
+      {
+       "start": 29.0,
+       "end": 30.73,
+       "heard": "Con cá mập."
+      }
+     ]
+    },
+    {
+     "id": 1730779115970,
+     "vi": "con sao biển",
+     "fr": "étoile de mer",
+     "use": 0,
+     "takes": [
+      {
+       "start": 32.12,
+       "end": 34.33,
+       "heard": "con sao biến."
+      },
+      {
+       "start": 35.26,
+       "end": 37.0,
+       "heard": "còn sau biển."
+      }
+     ]
+    },
+    {
+     "id": 1730780047464,
+     "vi": "con cá voi",
+     "fr": "baleine",
+     "use": 0,
+     "takes": [
+      {
+       "start": 38.12,
+       "end": 39.98,
+       "heard": "con cá voi."
+      },
+      {
+       "start": 41.0,
+       "end": 42.98,
+       "heard": "con, cá, vòi."
+      }
+     ]
+    },
+    {
+     "id": 1730780254712,
+     "vi": "con bạch tuộc",
+     "fr": "pieuvre",
+     "use": 0,
+     "takes": [
+      {
+       "start": 44.24,
+       "end": 45.85,
+       "heard": "Con bạch tuộc."
+      },
+      {
+       "start": 47.17,
+       "end": 48.74,
+       "heard": "Con bật tuộc."
+      }
+     ]
+    },
+    {
+     "id": 1730781147286,
+     "vi": "con sứa",
+     "fr": "méduse",
+     "use": 0,
+     "takes": [
+      {
+       "start": 50.17,
+       "end": 51.96,
+       "heard": "Còn sứa."
+      }
+     ]
+    },
+    {
+     "id": 1730785295331,
+     "vi": "con cá ngựa",
+     "fr": "hippocampe",
+     "use": 0,
+     "takes": [
+      {
+       "start": 63.77,
+       "end": 65.48,
+       "heard": "Con cá ngựa."
+      },
+      {
+       "start": 66.28,
+       "end": 68.12,
+       "heard": "Còn cá ngựa."
+      }
+     ]
+    },
+    {
+     "id": 1730861956492,
+     "vi": "con cua biển",
+     "fr": "crabe",
+     "use": 0,
+     "takes": [
+      {
+       "start": 69.09,
+       "end": 70.94,
+       "heard": "Con-Gur-Vienten."
+      },
+      {
+       "start": 71.83,
+       "end": 73.73,
+       "heard": "Con, cua, biển."
+      }
+     ]
+    },
+    {
+     "id": 1731059121816,
+     "vi": "con bướm",
+     "fr": "papillon ≠ papillon de nuit",
+     "use": 0,
+     "takes": [
+      {
+       "start": 74.93,
+       "end": 76.09,
+       "heard": "Còn vướm."
+      },
+      {
+       "start": 77.14,
+       "end": 78.57,
+       "heard": "Con Böhm"
+      }
+     ]
+    },
+    {
+     "id": 1733652908435,
+     "vi": "con sư tử",
+     "fr": "lion, lionne",
+     "use": 0,
+     "takes": [
+      {
+       "start": 79.78,
+       "end": 81.67,
+       "heard": "Còn sư tử."
+      },
+      {
+       "start": 82.76,
+       "end": 84.78,
+       "heard": "Con sư tử."
+      }
+     ]
+    },
+    {
+     "id": 1733724306263,
+     "vi": "con gấu",
+     "fr": "ours",
+     "use": 0,
+     "takes": [
+      {
+       "start": 85.92,
+       "end": 87.21,
+       "heard": "con gấu"
+      },
+      {
+       "start": 88.29,
+       "end": 89.51,
+       "heard": "Con gấu."
+      }
+     ]
+    },
+    {
+     "id": 1733725082150,
+     "vi": "con tê giác",
+     "fr": "rhinocéros",
+     "use": 0,
+     "takes": [
+      {
+       "start": 91.16,
+       "end": 92.76,
+       "heard": "Con T. Zach."
+      },
+      {
+       "start": 93.77,
+       "end": 96.08,
+       "heard": "Con tế giác."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

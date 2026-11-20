@@ -1,48 +1,118 @@
 [
  {
   "id": 1730714799858,
-  "vi": "rùa biển",
+  "vi": "con rùa biển",
   "fr": "tortue marine",
   "image": "img/1730714799858.jpg",
   "thumbnail": "thumb/1730714799858.jpg",
-  "audio": "audio/1730714799858.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730714799858.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 20.15,
+     "end": 22.13
+    },
+    {
+     "start": 22.87,
+     "end": 24.79
+    }
+   ]
+  }
  },
  {
   "id": 1730778542729,
-  "vi": "cá mập",
+  "vi": "con cá mập",
   "fr": "requin, squale",
   "image": "img/1730778542729.jpg",
   "thumbnail": "thumb/1730778542729.jpg",
-  "audio": "audio/1730778542729.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730778542729.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 26.46,
+     "end": 27.99
+    },
+    {
+     "start": 29.0,
+     "end": 30.73
+    }
+   ]
+  }
  },
  {
   "id": 1730779115970,
-  "vi": "sao biển",
+  "vi": "con sao biển",
   "fr": "étoile de mer",
   "image": "img/1730779115970.jpg",
   "thumbnail": "thumb/1730779115970.jpg",
-  "audio": "audio/1730779115970.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730779115970.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 32.12,
+     "end": 34.33
+    },
+    {
+     "start": 35.26,
+     "end": 37.0
+    }
+   ]
+  }
  },
  {
   "id": 1730780047464,
-  "vi": "cá voi",
+  "vi": "con cá voi",
   "fr": "baleine",
   "image": "img/1730780047464.jpg",
   "thumbnail": "thumb/1730780047464.jpg",
-  "audio": "audio/1730780047464.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730780047464.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 38.12,
+     "end": 39.98
+    },
+    {
+     "start": 41,
+     "end": 42.98
+    }
+   ]
+  }
  },
  {
   "id": 1730780254712,
-  "vi": "bạch tuộc",
+  "vi": "con bạch tuộc",
   "fr": "pieuvre",
   "image": "img/1730780254712.jpg",
   "thumbnail": "thumb/1730780254712.jpg",
-  "audio": "audio/1730780254712.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730780254712.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 44.24,
+     "end": 45.85
+    },
+    {
+     "start": 47.17,
+     "end": 48.74
+    }
+   ]
+  }
  },
  {
   "id": 1730781147286,
@@ -50,26 +120,64 @@
   "fr": "méduse",
   "image": "img/1730781147286.jpg",
   "thumbnail": "thumb/1730781147286.jpg",
-  "audio": "audio/1730781147286.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730781147286.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 50.17,
+     "end": 51.96
+    }
+   ]
+  }
  },
  {
   "id": 1730785295331,
-  "vi": "cá ngựa",
+  "vi": "con cá ngựa",
   "fr": "hippocampe",
   "image": "img/1730785295331.jpg",
   "thumbnail": "thumb/1730785295331.jpg",
-  "audio": "audio/1730785295331.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730785295331.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 63.77,
+     "end": 65.48
+    },
+    {
+     "start": 66.28,
+     "end": 68.12
+    }
+   ]
+  }
  },
  {
   "id": 1730861956492,
-  "vi": "cua biển",
+  "vi": "con cua biển",
   "fr": "crabe",
   "image": "img/1730861956492.jpg",
   "thumbnail": "thumb/1730861956492.jpg",
-  "audio": "audio/1730861956492.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1730861956492.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 69.09,
+     "end": 70.94
+    },
+    {
+     "start": 71.83,
+     "end": 73.73
+    }
+   ]
+  }
  },
  {
   "id": 1731059121816,
@@ -77,8 +185,22 @@
   "fr": "papillon ≠ papillon de nuit",
   "image": "img/1731059121816.jpg",
   "thumbnail": "thumb/1731059121816.jpg",
-  "audio": "audio/1731059121816.mp3",
-  "audio_source": "deck"
+  "audio": "voice/1731059121816.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 74.93,
+     "end": 76.09
+    },
+    {
+     "start": 77.14,
+     "end": 78.57
+    }
+   ]
+  }
  },
  {
   "id": 1733652908435,
@@ -86,8 +208,22 @@
   "fr": "lion, lionne",
   "image": "img/1733652908435.jpg",
   "thumbnail": "thumb/1733652908435.jpg",
-  "audio": "audio/1733652908435.mp3",
-  "audio_source": "deck"
+  "audio": "voice/1733652908435.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 79.78,
+     "end": 81.67
+    },
+    {
+     "start": 82.76,
+     "end": 84.78
+    }
+   ]
+  }
  },
  {
   "id": 1733724306263,
@@ -95,8 +231,22 @@
   "fr": "ours",
   "image": "img/1733724306263.jpg",
   "thumbnail": "thumb/1733724306263.jpg",
-  "audio": "audio/1733724306263.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1733724306263.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 85.92,
+     "end": 87.21
+    },
+    {
+     "start": 88.29,
+     "end": 89.51
+    }
+   ]
+  }
  },
  {
   "id": 1733725082150,
@@ -104,8 +254,22 @@
   "fr": "rhinocéros",
   "image": "img/1733725082150.jpg",
   "thumbnail": "thumb/1733725082150.jpg",
-  "audio": "audio/1733725082150.m4a",
-  "audio_source": "macOS voice Linh"
+  "audio": "voice/1733725082150.m4a",
+  "audio_source": "grand-père",
+  "voice": {
+   "recording": "voice/2026-11-18-animaux-1.m4a",
+   "use": 0,
+   "takes": [
+    {
+     "start": 91.16,
+     "end": 92.76
+    },
+    {
+     "start": 93.77,
+     "end": 96.08
+    }
+   ]
+  }
  },
  {
   "id": 1733730545222,

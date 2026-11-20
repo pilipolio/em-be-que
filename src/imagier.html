@@ -15,6 +15,7 @@
     --green: #2f6b4f;
     --font: "Be Vietnam Pro", system-ui, -apple-system, "Helvetica Neue", sans-serif;
   }
+  [hidden] { display: none !important; }
   body {
     margin: 0;
     background: var(--paper);
@@ -47,6 +48,28 @@
   .tile.playing { border-color: var(--red); outline: 3px solid var(--red); transform: scale(1.03); }
   @media (prefers-reduced-motion: reduce) { .tile.playing { transform: none; } }
   button:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+  .tile .by { font-size: 0.75rem; color: var(--muted); }
+
+  /* Review mode (#review): choose the take of a family recording and move its start and end. */
+  .review {
+    position: sticky; top: 0; z-index: 1;
+    display: flex; flex-direction: column; gap: 8px;
+    border: 1px solid var(--ink); border-radius: 8px; padding: 12px; background: var(--paper);
+  }
+  .review h2 { margin: 0; font-size: 1.1rem; color: var(--red); }
+  .review p { margin: 0; font-size: 0.95rem; }
+  .review .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .review button {
+    min-height: 40px; padding: 0 10px;
+    border: 1px solid var(--ink); border-radius: 8px; background: var(--paper); color: var(--ink);
+    font: 600 0.9rem var(--font); cursor: pointer; font-variant-numeric: tabular-nums;
+  }
+  .review button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: var(--paper); }
+  .review textarea {
+    width: 100%; box-sizing: border-box; min-height: 6rem; resize: vertical;
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px;
+    background: var(--paper-deep); color: var(--ink); font: 0.8rem ui-monospace, Menlo, monospace;
+  }
   .credit { margin: 0; font-size: 0.75rem; color: var(--muted); text-align: center; }
   .credit a { color: inherit; }
 </style>
@@ -60,6 +83,24 @@
     </nav>
   </header>
   <p class="hint">Touche une image pour entendre le mot.</p>
+  <section class="review" id="review" aria-label="Réglage des voix" hidden>
+    <h2>Réglage des voix</h2>
+    <p id="review-word">Touche une image avec la voix de la famille.</p>
+    <div class="row" id="review-takes"></div>
+    <div class="row" id="review-times" hidden>
+      <span>Début</span>
+      <button type="button" data-edge="start" data-step="-0.05">−</button>
+      <span id="review-start"></span>
+      <button type="button" data-edge="start" data-step="0.05">+</button>
+      <span>Fin</span>
+      <button type="button" data-edge="end" data-step="-0.05">−</button>
+      <span id="review-end"></span>
+      <button type="button" data-edge="end" data-step="0.05">+</button>
+      <button type="button" id="review-listen">Écouter</button>
+    </div>
+    <label for="review-output">Corrections, à donner à scripts/apply_voice_review.py :</label>
+    <textarea id="review-output" readonly spellcheck="false"></textarea>
+  </section>
   <div class="grid" id="grid"></div>
   <p class="credit">Images et sons : deck Anki <a href="https://ankiweb.net/shared/info/1119829676" target="_blank" rel="noopener">Bé Học Tiếng Anh</a>.</p>
 </div>
@@ -88,11 +129,21 @@
     french.lang = "fr";
     french.textContent = animal.fr;
     button.append(image, vietnamese, french);
-    button.addEventListener("click", () => play(animal, button));
+    if (animal.voice) {
+      const by = document.createElement("span");
+      by.className = "by";
+      by.textContent = "voix : " + animal.audio_source;
+      button.append(by);
+    }
+    button.addEventListener("click", () => {
+      if (reviewMode() && animal.voice) select(animal, button);
+      else play(animal, button);
+    });
     return button;
   }
 
   function play(animal, button) {
+    Object.values(recordings).forEach((audio) => audio.pause());
     playing?.classList.remove("playing");
     playing = button;
     button.classList.add("playing");
@@ -105,6 +156,102 @@
     playing = null;
   }
 
+  // Review mode: play a take from the whole recording, with the padding of scripts/prepare_anki_media.py.
+  const PADDING = [0.1, 0.15];
+  const edits = {};
+  let reviewed = null;
+  let stopAt = null;
+
+  function reviewMode() {
+    return location.hash === "#review";
+  }
+
+  function select(animal, button) {
+    reviewed = animal;
+    edits[animal.id] ??= { use: animal.voice.use, takes: animal.voice.takes.map((take) => ({ ...take })) };
+    playing?.classList.remove("playing");
+    playing = button;
+    button.classList.add("playing");
+    refreshReview();
+    listen();
+  }
+
+  function refreshReview() {
+    document.getElementById("review").hidden = !reviewMode();
+    if (reviewMode()) animals.forEach((animal) => animal.voice && recordingAudio(animal.voice.recording));
+    const output = document.getElementById("review-output");
+    output.value = Object.keys(edits).length ? JSON.stringify(edits) : "";
+    if (!reviewed) return;
+    const edit = edits[reviewed.id];
+    document.getElementById("review-word").textContent = reviewed.vi + " · " + reviewed.fr;
+    document.getElementById("review-takes").replaceChildren(...edit.takes.map((take, i) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "Prise " + (i + 1);
+      button.setAttribute("aria-pressed", String(i === edit.use));
+      button.addEventListener("click", () => { edit.use = i; refreshReview(); listen(); });
+      return button;
+    }));
+    const take = edit.takes[edit.use];
+    document.getElementById("review-times").hidden = false;
+    document.getElementById("review-start").textContent = take.start.toFixed(2) + " s";
+    document.getElementById("review-end").textContent = take.end.toFixed(2) + " s";
+  }
+
+  function nudge(edge, step) {
+    if (!reviewed) return;
+    const edit = edits[reviewed.id];
+    const take = edit.takes[edit.use];
+    take[edge] = Math.round((take[edge] + step) * 100) / 100;
+    if (take.end - take.start < 0.2) take[edge] = Math.round((take[edge] - step) * 100) / 100;
+    refreshReview();
+    listen();
+  }
+
+  const recordings = {}; // one audio element per family recording, loaded when review mode opens
+
+  function recordingAudio(source) {
+    if (!recordings[source]) {
+      recordings[source] = new Audio(source);
+      recordings[source].preload = "auto";
+      recordings[source].addEventListener("timeupdate", watchStop);
+    }
+    return recordings[source];
+  }
+
+  async function listen() {
+    const edit = edits[reviewed.id];
+    const take = edit.takes[edit.use];
+    word.pause();
+    Object.values(recordings).forEach((audio) => audio.pause());
+    const audio = recordingAudio(reviewed.voice.recording);
+    if (audio.readyState < 1) await new Promise((resolve) => audio.addEventListener("loadedmetadata", resolve, { once: true }));
+    audio.currentTime = Math.max(0, take.start - PADDING[0]);
+    stopAt = take.end + PADDING[1];
+    audio.play().catch(() => {});
+  }
+
+  function watchStop() {
+    Object.values(recordings).forEach((audio) => {
+      if (stopAt !== null && !audio.paused && audio.currentTime >= stopAt) {
+        audio.pause();
+        stopAt = null;
+      }
+    });
+  }
+
+  function tick() {
+    watchStop();
+    requestAnimationFrame(tick);
+  }
+
   word.addEventListener("ended", stop);
+  document.querySelectorAll("#review-times [data-edge]").forEach((button) =>
+    button.addEventListener("click", () => nudge(button.dataset.edge, Number(button.dataset.step))));
+  document.getElementById("review-listen").addEventListener("click", () => reviewed && listen());
+  document.getElementById("review-output").addEventListener("focus", (event) => event.target.select());
+  window.addEventListener("hashchange", refreshReview);
   document.getElementById("grid").replaceChildren(...animals.map(tile));
+  refreshReview();
+  requestAnimationFrame(tick);
 </script>

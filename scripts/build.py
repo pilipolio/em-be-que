@@ -40,6 +40,7 @@ def main() -> None:
 
     animals = json.loads((ROOT / "anki" / "animal.json").read_text())
     shutil.copytree(ROOT / "assets" / "anki", DIST / "anki", dirs_exist_ok=True)
+    shutil.copytree(ROOT / "assets" / "voice", DIST / "voice", dirs_exist_ok=True)
     for name in ("animaux.html", "imagier.html"):
         page = (ROOT / "src" / name).read_text()
         write(page.replace("__ANIMALS__", json.dumps(animals, ensure_ascii=False)), name)

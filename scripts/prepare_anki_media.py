@@ -1,7 +1,7 @@
 """Copy the pictures and word sounds of one category from anki-deck/ to assets/anki/, and write anki/<category>.json.
 
-The pictures become 640 px JPEG, with a 240 px thumbnail. A note without a word sound in the deck gets one from the macOS
-Vietnamese voice "Linh".
+The pictures become 640 px JPEG, with a 240 px thumbnail. The word sound is, in this order: the chosen take
+of a family recording in anki/voices.json, the word sound of the deck, or the macOS Vietnamese voice "Linh".
 Usage: python3 scripts/prepare_anki_media.py [category]   (default: animal)
 """
 
@@ -14,6 +14,26 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DECK_DIR = ROOT / "anki-deck"
 OUT = ROOT / "assets" / "anki"
+PADDING = (0.1, 0.15)  # seconds kept before and after a take: the pauses cut soft starts and ends
+
+
+def voice_clips() -> dict[int, dict]:
+    path = ROOT / "anki" / "voices.json"
+    if not path.exists():
+        return {}
+    recordings = json.loads(path.read_text())["recordings"]
+    return {
+        clip["id"]: {**clip, "recording": r["file"], "speaker": r["speaker"]} for r in recordings for clip in r["clips"]
+    }
+
+
+def cut(recording: Path, take: dict, target: Path) -> None:
+    start = max(0.0, take["start"] - PADDING[0])
+    fades = "afade=t=in:d=0.03,areverse,afade=t=in:d=0.05,areverse"
+    command = ["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.2f}", "-to", f"{take['end'] + PADDING[1]:.2f}"]
+    command += ["-i", str(recording), "-af", fades, "-ac", "1", "-c:a", "aac", "-b:a", "64k"]
+    command += ["-map_metadata", "-1", "-fflags", "+bitexact", "-flags:a", "+bitexact", str(target)]
+    subprocess.run(command, check=True)
 
 
 def resize(source: Path, size: int, target: Path) -> None:
@@ -28,6 +48,8 @@ def main() -> None:
     (OUT / "img").mkdir(parents=True, exist_ok=True)
     (OUT / "thumb").mkdir(parents=True, exist_ok=True)
     (OUT / "audio").mkdir(parents=True, exist_ok=True)
+    (OUT / "voice").mkdir(parents=True, exist_ok=True)
+    voices = voice_clips()
 
     items = []
     for note in notes:
@@ -60,17 +82,24 @@ def main() -> None:
                     check=True,
                 )
             audio_source = "macOS voice Linh"
-        items.append(
-            {
-                "id": note["id"],
-                "vi": note["word"],
-                "fr": note["fr"],
-                "image": image,
-                "thumbnail": thumbnail,
-                "audio": audio,
-                "audio_source": audio_source,
-            }
-        )
+        item = {
+            "id": note["id"],
+            "vi": note["word"],
+            "fr": note["fr"],
+            "image": image,
+            "thumbnail": thumbnail,
+            "audio": audio,
+            "audio_source": audio_source,
+        }
+        if note["id"] in voices:
+            clip = voices[note["id"]]
+            item["audio"] = f"voice/{note['id']}.m4a"
+            cut(ROOT / clip["recording"], clip["takes"][clip["use"]], OUT / item["audio"])
+            # The label shows the word as the speaker says it, for example with "con" in front.
+            item.update(vi=clip["vi"], audio_source=clip["speaker"])
+            item["voice"] = {"recording": clip["recording"].removeprefix("assets/"), "use": clip["use"]}
+            item["voice"]["takes"] = [{"start": t["start"], "end": t["end"]} for t in clip["takes"]]
+        items.append(item)
 
     path = ROOT / "anki" / f"{category}.json"
     path.write_text(json.dumps(items, ensure_ascii=False, indent=1) + "\n")
